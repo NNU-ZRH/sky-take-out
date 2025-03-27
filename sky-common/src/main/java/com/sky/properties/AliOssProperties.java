@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "sky.alioss")
 @Data
+//读取配置文件
 public class AliOssProperties {
 
     private String endpoint;
