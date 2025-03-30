@@ -26,4 +26,25 @@
         </where>
         order by d.update_time desc
     </select>
+    <insert id="addDish" useGeneratedKeys="true" keyProperty="id">
+        insert into dish (name,category_id,price,image,description,status,create_time,update_time,create_user,update_user)
+        values (#{name},#{categoryId},#{price},#{image},#{description},#{status},#{createTime},#{updateTime},#{createUser},#{updateUser})
+    </insert>
+    <insert id="addDishFlavor">
+        insert into dish_flavor (dish_id,name,value) values
+        <foreach collection="flavors" item="flavor" separator=",">
+            (#{flavor.dishId},#{flavor.name},#{flavor.value})
+        </foreach>
+    </insert>
+    <select id="getSetMeal" resultType="map">
+        select * from setmeal_dish
+        <where>
+            <if test="idList != null and idList.size() > 0">
+                and dish_id in
+                <foreach collection="idList" item="id" open="(" close=")" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+    </select>
 </mapper>
