@@ -2,15 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--所依赖的父工程-->
     <parent>
         <artifactId>sky-take-out</artifactId>
         <groupId>com.sky</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <!--子工程不需要指定groupId和version了，取决于父工程-->
     <artifactId>sky-server</artifactId>
     <dependencies>
 
+        <!--其他两个子工程也需要引入进来-->
         <dependency>
             <groupId>com.sky</groupId>
             <artifactId>sky-common</artifactId>
@@ -23,6 +26,8 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <!--因为所依赖的父工程，子模块所有官方的starter依赖都可以不写版本号了，因为父工程已经版本管理-->
+        <!--starter是包含了该依赖所需要的所有依赖统一集合-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -117,6 +122,7 @@
         </dependency>
     </dependencies>
 
+    <!--maven构建插件，默认打jar包-->
     <build>
         <plugins>
             <plugin>

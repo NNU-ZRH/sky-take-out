@@ -2,21 +2,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--maven版本号-->
     <modelVersion>4.0.0</modelVersion>
+    <!--当前是父工程，父工程没有src目录，不写代码-->
+    <!--父工程所依赖的父工程，子模块所有官方的starter依赖都可以不写版本号了，因为在这里已经了版本管理-->
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
         <version>2.7.3</version>
     </parent>
+    <!--父工程的gav坐标，注意packing为pom-->
     <groupId>com.sky</groupId>
     <artifactId>sky-take-out</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <!--子工程-->
     <modules>
         <module>sky-common</module>
         <module>sky-pojo</module>
         <module>sky-server</module>
     </modules>
+    <!--版本号-->
     <properties>
         <mybatis.spring>2.2.0</mybatis.spring>
         <lombok>1.18.20</lombok>
@@ -31,6 +37,7 @@
         <jaxb-api>2.3.1</jaxb-api>
         <poi>3.16</poi>
     </properties>
+    <!--统一版本管理，父工程不会下载依赖，子工程用到才会下载，子工程使用这里的版本号-->
     <dependencyManagement>
         <dependencies>
             <dependency>
