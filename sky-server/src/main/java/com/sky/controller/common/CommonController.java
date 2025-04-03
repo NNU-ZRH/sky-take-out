@@ -43,7 +43,7 @@ public class CommonController {
         //获取文件扩展名.jpg
         String suffix = originalFilename.substring(originalFilename.lastIndexOf("."));
         String fileName = UUID.randomUUID() + suffix;
-        String url = "";
+        String url;
         try {
             url = aliOssUtil.upload(file.getBytes(), fileName);
         } catch (Exception e) {
